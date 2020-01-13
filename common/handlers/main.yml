@@ -1,12 +1,10 @@
 - name: reload sshd
-  systemd:
-    name: ssh
-    state: reloaded
+  shell: systemctl reload ssh
 
 - name: reload resolv config
-  command: resolvconf -u
+  shell: resolvconf -u
 
 - name: restart journald
-  systemd:
+  service:
     name: systemd-journald
     state: restarted

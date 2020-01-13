@@ -1,2 +1,2 @@
-- pause:
-    prompt: "Pause weil gleich kommen die Handler. :-) Drücke 'ctrl + c' um abzubrechen oder 'Enter' zum weitermachen"
+#- pause:
+#    prompt: "Pause weil gleich kommen die Handler. :-) Drücke 'ctrl + c' um abzubrechen oder 'Enter' zum weitermachen"

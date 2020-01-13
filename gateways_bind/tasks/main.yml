@@ -63,7 +63,11 @@
 - name: copy bind9.service
   copy: src=bind9.service dest=/etc/systemd/system/bind9.service.d/override.conf
   notify:
-    - reread systemd configs
+    - restart bind9
+
+- name: reread systemd configs
+  systemd:
+    daemon_reload: yes
 
 - name: Deploy logrotate template file
   template:
