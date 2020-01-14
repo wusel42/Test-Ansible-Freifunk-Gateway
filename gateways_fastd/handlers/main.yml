@@ -6,7 +6,7 @@
   when: item.value.fastd is defined and item.value.fastd
   with_dict: "{{ domaenenliste }}"
 
-- name: restart haveged
+- name: reread systemd configs
   systemd:
-    name: haveged
-    state: restarted
+    daemon_reload: yes
+

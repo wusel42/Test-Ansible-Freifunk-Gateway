@@ -22,8 +22,8 @@
   notify:
     - restart collectd
 
-- name: deploy collectd.conf
-  template: src=collectd.conf.j2 dest=/etc/collectd/collectd.conf
+- name: deploy collectd.conf 
+  template: src=collectd.conf.j2 dest=/etc/collectd/collectd.conf 
   notify:
     - restart collectd
 
