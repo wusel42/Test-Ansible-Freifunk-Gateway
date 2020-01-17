@@ -74,7 +74,7 @@ protocol static v6localexit {
 };
 {% endif %}
 
-{% if ipv6_direkt_ausleiten is defined %}
+{% if ipv6_direkt_ausleiten is defined and ipv6_direkt_ausleiten %}
 protocol ospf upstream {
 	table ffnet;
 	import where is_default();
@@ -134,6 +134,7 @@ protocol static static_Gesamtnetzwerk {
 	route {{ff_network.v6_network}} reject;
 };
 
+{% if ffrl_tun is defined or ffnw_tun is defined %}
 {% if domaenenliste is defined %}
 {% for domaene in domaenenliste|dictsort %}
 protocol static static_domaene{{domaene[0]}} {
@@ -141,6 +142,7 @@ protocol static static_domaene{{domaene[0]}} {
 	route {{domaenen[domaene[0]].ffv6_network | regex_replace('..::/\d+$','00::/56')}} reject;
 };
 {% endfor %}
+{% endif %}
 {% endif %}
 {% if dhcp is defined %}
 protocol static 'static_{{inventory_hostname_short}}' {
