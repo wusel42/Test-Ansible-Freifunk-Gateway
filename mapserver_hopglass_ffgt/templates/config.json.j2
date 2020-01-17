@@ -24,7 +24,7 @@
   ],
   "siteNames": [
 {% for domaene in domaenen|dictsort %}
-    { "site": "{{freifunk.kurzname}}d{{domaene[0]}}", "name": "Domäne {{domaene[0]}} - {{domaene[1].name}}" }{% if not loop.last %},{% endif %}
+    { "site": "freifunkd{{domaene[0]}}", "name": "Domäne {{domaene[0]}} - {{domaene[1].name}}" }{% if not loop.last %},{% endif %}
 
 {% endfor %}
   ],
