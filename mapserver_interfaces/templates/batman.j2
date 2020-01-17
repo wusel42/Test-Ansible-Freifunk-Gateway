@@ -11,8 +11,8 @@ iface bat{{domaene[0]}} inet6 static
         address fe80::dcad:beff:feef:{{ '%02x' % indexer[0] }}{{'%02d' % server_id}}
         netmask 64
         pre-up modprobe batman-adv
-       pre-up ip link add bat{{domaene[0]}} type batadv
-       post-up ip link set address de:ad:be:ef:{{ '%02x' % indexer[0] }}:{{server_id}} dev bat{{domaene[0]}}
+        pre-up ip link add bat{{domaene[0]}} type batadv
+        post-up ip link set address de:ad:be:ef:{{ '%02x' % indexer[0] }}:{{server_id}} dev bat{{domaene[0]}}
         post-up ip link set dev bat{{domaene[0]}} up
         post-up batctl -m bat{{domaene[0]}} it 10000
 {% for host in groups["gateways"] %}
