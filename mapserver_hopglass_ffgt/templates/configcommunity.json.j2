@@ -5,7 +5,7 @@
 {% endif %}
 {% endfor %}
 {
-  "dataPath": "/data/map_{% for domain in map_domains %}{{freifunk.kurzname}}d{{domain[0]}}{% if not loop.last %},{% endif %}{% endfor %}/",
+  "dataPath": "/data/map_{% for domain in map_domains %}{{domain[0]}.site_code}{% if not loop.last %},{% endif %}{% endfor %}/",
   "siteName": "Freifunk {{item}}",
   "mapSigmaScale": {{ mapconfig.communityMap.map_scale }},
   "showContact": {{ mapconfig.communityMap.map_show_contact | lower}},
