@@ -1,5 +1,5 @@
 {
-{% if is defined item[1].proxy_map_data_url and item[1].proxy_map_data_url %}
+{% if item[1].proxy_map_data_url is defined and item[1].proxy_map_data_url %}
   "dataPath": "/data/proxy_{{item[1].site_code}}/",
 {% else %}
   "dataPath": "/data/map_{{item[0]}}/",
