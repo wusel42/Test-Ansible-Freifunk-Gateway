@@ -54,7 +54,7 @@ server {
     # Proxy for external map data (if any)
 {% for domaene in domaenen|dictsort %}
 {% if domaene[1].proxy_map_data_url is defined and domaene[1].proxy_map_data_url %}
-    location /proxy_{{domaene[0].site_code}}/ {
+    location /proxy_{{domaene[1].site_code}}/ {
         proxy_set_header        Host $host;
         proxy_set_header        X-Real-IP $remote_addr;
         proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
