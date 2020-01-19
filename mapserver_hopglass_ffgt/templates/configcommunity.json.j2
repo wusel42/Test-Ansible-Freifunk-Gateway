@@ -30,7 +30,7 @@
   ],
   "siteNames": [
 {% for domain in map_domains %}
-    { "site": "{{freifunk.kurzname}}d{{domain[0]}}", "name": "Mesh {{domain[0]}} - {{domain[1].name}}" }{% if not loop.last %},{% endif %}
+    { "site": "{{domain[1].site_code}}", "name": "Mesh {{domain[0]}} - {{domain[1].name}}" }{% if not loop.last %},{% endif %}
 
 {% endfor %}
   ],
