@@ -81,11 +81,7 @@ server {
     location /data/ {
         # mapdata for each domain, because hopglass can't handle args in uri
 {% for domaene in domaenen|dictsort %}
-{% if is defined domaene[0].proxy_map_data_url and domaene[0].proxy_map_data_url %}
-        rewrite "^/data/map_{{domaene[0].site_code}}/(.+)$" /proxy/$1 break;
-{% else %}
         rewrite "^/data/map_{{domaene[0].site_code}}/(.+)$" /$1?filter=site&value={{domaenen[domaene[0]].site_code}} break;
-{% endif %}
 {% endfor %}
         #rewrite "^/data/map_([^/]+)/(.+)$" /$2?filter=site&value=$1 break;
 
