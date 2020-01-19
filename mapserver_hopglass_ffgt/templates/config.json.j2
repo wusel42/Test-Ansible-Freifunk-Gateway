@@ -14,9 +14,9 @@
       "url": "{{layer.url}}",
       "config": {
 {% for k,v in layer.config|dictsort %}
-        "{{k}}": {% if v is number %}{{v}}{% else %}"{{v}}"{% endif %}{% if not loop.last %},{% endif %}
+        "{{k}}"
+{% endfor %}: {% if v is number %}{{v}}{% else %}"{{v}}"{% endif %}{% if not loop.last %},{% endif %}
 
-{% endfor %}
       }
     }{% if not loop.last %},{% endif %}
 
