@@ -1,11 +1,11 @@
 {% set proxy_urls = [] %}
 {% for domain in domaenen|dictsort %}
 {% if domain[1].proxy_map_data_url is defined and domain[1].proxy_map_data_url %}
-{% if proxy_urls.append("/proxy_" + domain[1].site_code + "/") %}{% endif %}
+{% if proxy_urls.append(domain[1].site_code) %}{% endif %}
 {% endif %}
 {% endfor %}
 {
-  "dataPath": [ {% for url in proxy_urls %}"{{ url[0] }}",{% endfor %}"/data/" ],
+  "dataPath": [ {% for url in proxy_urls %}"/proxy_{{ url }}/",{% endfor %}"/data/" ],
   "siteName": "{{freifunk.name}}",
   "mapSigmaScale": {{ mapconfig.globalMap.map_scale }},
   "showContact": {{ mapconfig.globalMap.map_show_contact | lower}},
