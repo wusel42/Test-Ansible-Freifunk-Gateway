@@ -1,7 +1,7 @@
 {% set proxy_urls = [] %}
 {% for domain in domaenen|dictsort %}
 {% if domain[1].proxy_map_data_url is defined and domain[1].proxy_map_data_url %}
-{% if proxy_urls.append("/proxy_" domain[1].site_code "/") %}{% endif %}
+{% if proxy_urls.append("/proxy_" + domain[1].site_code + "/") %}{% endif %}
 {% endif %}
 {% endfor %}
 {
