@@ -1,0 +1,13 @@
+--- DataHandler.py	2020-01-22 14:09:29.590940411 +0100
++++ /var/tmp/DataHandler.py	2020-01-22 14:12:51.132767791 +0100
+@@ -182,8 +182,8 @@
+                         siteDict['firmware']['autoupdater_enabled'] += 1
+ 
+         # do the advanced node info stuff
+-        if not self.__isAdvNode__(nodeID, nodeData):
+-            return
++        #if not self.__isAdvNode__(nodeID, nodeData):
++        #    return
+ 
+         # statistics
+         for key in ('rootfs_usage', 'memory', 'uptime', 'idletime', 'loadavg', 'processes'):

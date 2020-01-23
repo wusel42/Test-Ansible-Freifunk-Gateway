@@ -1,11 +1,17 @@
 ---
 # configure node-stats for respondd 
 
+ name: Install dependencies
+  apt:
+    name: ['python3-dateutil']
+  when: (ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04') or
+        (ansible_distribution == 'Debian' and ansible_distribution_version == '10')
+
 - name: Clone node-stats repo for respondd.
   git:
     repo: https://github.com/FreiFunkMuenster/node-stats.git
     dest: /opt/node-stats
-    version: respondd
+    version: glass_link
     force: yes
 
 - name: Deploy update.sh script
