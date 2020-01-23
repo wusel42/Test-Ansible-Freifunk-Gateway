@@ -14,11 +14,30 @@
     version: glass_link
     force: yes
 
+- name: Deploy patch-file
+  template:
+    src: ffgt-mod.diff
+    dest: /opt/node-stats/ffgt-mod.diff
+    mode: "u+r,g+r"
+  when: adv_node_stats_filter is not defined
+
+- name: Patch sources
+  shell: patch -p0 <ffgt-mod.diff
+  args:
+    chdir: /opt/node-stats/
+  when: adv_node_stats_filter is not defined
+
 - name: Deploy update.sh script
   template:
     src: update.sh.j2
     dest: /opt/node-stats/update.sh
-    mode: "u+x,g+x"
+    mode: "u+rwx,g+rx"
+
+- name: Deploy config.json
+  template:
+    src: config.json.j2
+    dest: /opt/node-stats/config.json
+    mode: "u+rw,g+r"
 
 - name: Define cron for node-stats.
   cron:
