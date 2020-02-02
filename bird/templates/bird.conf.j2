@@ -151,7 +151,9 @@ protocol ospf backbone {
 		};
 {% endif %}
 {% endfor %}
-		interface "bck-*";
+		interface "bck-*" {
+			cost 1000;
+		};
 
 		interface "lo" {
 			stub;
