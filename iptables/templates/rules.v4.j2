@@ -3,7 +3,16 @@
 *filter
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
--A FORWARD -p tcp --dport 25 -j DROP
+{% if blocked_tcp_ports is defined %}
+{% for port in blocked_tcp_ports %}
+-A FORWARD -p tcp --dport {{port}}  -j DROP
+{% endfor %}
+{% endif %}
+{% if blocked_udp_ports is defined %}
+{% for port in blocked_udp_ports %}
+-A FORWARD -p udp --dport {{port}}  -j DROP
+{% endfor %}
+{% endif %}
 :OUTPUT ACCEPT [0:0]
 -A INPUT -p udp -m udp --dport 111 -j DROP
 COMMIT
@@ -53,7 +62,7 @@ COMMIT
 -A DNS -j MARK --set-mark 0x1
 -A DNS -j RETURN
 :POSTROUTING ACCEPT [0:0]
-{% if ffrl_tun is defined or ffnw_tun is defined or ffgt_tun %}
+{% if ffrl_tun is defined or ffnw_tun is defined or ffgt_tun is defined %}
 -A POSTROUTING -o tun-+ -p tcp -m tcp --tcp-flags SYN,RST SYN -m tcpmss ! --mss 0:1240 -j TCPMSS --set-mss 1240
 {% elif ospf_nat_ip is defined %}
 {% for domaene in domaenenliste|dictsort %}
