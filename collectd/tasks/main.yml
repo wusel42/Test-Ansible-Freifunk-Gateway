@@ -22,15 +22,15 @@
   notify:
     - restart collectd
 
-#- name: deploy collectd.conf 
-#  template: src=collectd.conf.j2 dest=/etc/collectd/collectd.conf 
-#  notify:
-#    - restart collectd
+- name: deploy collectd.conf 
+  template: src=collectd.conf.j2 dest=/etc/collectd/collectd.conf 
+  notify:
+    - restart collectd
 
-#- name: deploy collection.conf
-#  template: src=collection.conf.j2 dest=/etc/collectd/collection.conf
-#  notify:
-#    - restart collectd
+- name: deploy collection.conf
+  template: src=collection.conf.j2 dest=/etc/collectd/collection.conf
+  notify:
+    - restart collectd
 
 - name: deploy filters.conf
   template: src=filters.conf.j2 dest=/etc/collectd/filters.conf
